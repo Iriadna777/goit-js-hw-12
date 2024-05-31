@@ -13,6 +13,7 @@ export function clearGallery() {
 export function renderImages(images) {
   const gallery = document.getElementById('gallery');
   if (gallery) {
+    const fragment = document.createDocumentFragment();
   images.forEach(image => {
     const imgElement = document.createElement('a');
     imgElement.href = image.largeImageURL;
@@ -23,8 +24,9 @@ export function renderImages(images) {
     <p>Comments: ${image.comments}</p>
     <p>Downloads: ${image.downloads}</p>
   </div>`;
-    gallery.appendChild(imgElement);
+    fragment.appendChild(imgElement);
   });
+  gallery.appendChild(fragment);
   const lightbox = new SimpleLightbox('.gallery a');
   lightbox.refresh();
  }
@@ -50,4 +52,17 @@ export function showError(message) {
     message: message,
     position: 'topRight'
   });
+}
+
+export function toggleLoadMoreButton(show) {
+  const loadMoreContainer = document.getElementById('load-more-container');
+  if (loadMoreContainer) {
+    loadMoreContainer.style.display = show ? 'block' : 'none';
+  }
+}
+
+export function showEndOfResults() {
+  const endMessage = document.createElement('p');
+  endMessage.textContent = "We're sorry, but you've reached the end of search results.";
+  document.body.appendChild(endMessage);
 }

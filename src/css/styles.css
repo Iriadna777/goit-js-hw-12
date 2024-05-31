@@ -24,7 +24,7 @@
 
 body {
   font-family: Arial, sans-serif;
-  background-color: #f9f9f9;
+  background-color: #FFFFFF;
   margin: 0;
   padding: 20px;
 }
@@ -149,4 +149,27 @@ body {
   text-align: center;
   margin-top: 20px;
 }
+
+#load-more-container {
+  display: block;
+  margin: 20px auto;
+  text-align: center;
+}
+
+#load-more-button {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #4E75FF;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+#load-more-button:hover {
+  background-color: #6C8CFF;
+}
+
 
