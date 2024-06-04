@@ -1,5 +1,5 @@
 import { fetchImages } from './js/pixabay-api.js';
-import { clearGallery, renderImages, showLoader, hideLoader, showError, toggleLoadMoreButton, showEndOfResults } from './js/render-functions.js';
+import { clearGallery, renderImages, showLoader, hideLoader, showError, toggleLoadMoreButton, showEndOfResults, clearEndOfResultsMessage } from './js/render-functions.js';
 
 let currentPage = 1;
 let currentQuery = '';
@@ -18,6 +18,7 @@ form.addEventListener('submit', async (event) => {
   
   currentPage = 1;
   clearGallery();
+  clearEndOfResultsMessage();
   toggleLoadMoreButton(false);
   showLoader();
   
@@ -50,7 +51,7 @@ loadMoreButton.addEventListener('click', async () => {
       showEndOfResults();
     } else {
       window.scrollBy({
-        top: document.querySelector('.gallery a').getBoundingClientRect().height * 2,
+        top: document.querySelector('.gallery').getBoundingClientRect().height,
         behavior: 'smooth'
       });
     }

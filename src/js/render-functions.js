@@ -62,7 +62,16 @@ export function toggleLoadMoreButton(show) {
 }
 
 export function showEndOfResults() {
+  clearEndOfResultsMessage();
   const endMessage = document.createElement('p');
   endMessage.textContent = "We're sorry, but you've reached the end of search results.";
+  endMessage.id = 'end-of-results-message';
   document.body.appendChild(endMessage);
+}
+
+export function clearEndOfResultsMessage() {
+  const endMessage = document.getElementById('end-of-results-message');
+  if (endMessage) {
+    endMessage.remove();
+  }
 }
