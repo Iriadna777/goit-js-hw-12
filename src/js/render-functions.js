@@ -3,6 +3,8 @@ import "simplelightbox/dist/simple-lightbox.min.css";
 import iziToast from "izitoast";
 import "izitoast/dist/css/iziToast.min.css";
 
+let lightbox;
+
 export function clearGallery() {
   const gallery = document.getElementById('gallery');
   if (gallery) {
@@ -27,7 +29,11 @@ export function renderImages(images) {
     fragment.appendChild(imgElement);
   });
   gallery.appendChild(fragment);
-  const lightbox = new SimpleLightbox('.gallery a');
+
+  if (lightbox) {
+    lightbox.destroy();
+  }
+  lightbox = new SimpleLightbox('.gallery a');
   lightbox.refresh();
  }
 }
