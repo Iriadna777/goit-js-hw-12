@@ -10,6 +10,10 @@ export function clearGallery() {
   if (gallery) {
   gallery.innerHTML = '';
  }
+ if (lightbox) {
+  lightbox.destroy();
+  lightbox = null;
+}
 }
 
 export function renderImages(images) {
@@ -30,11 +34,11 @@ export function renderImages(images) {
   });
   gallery.appendChild(fragment);
 
-  if (lightbox) {
-    lightbox.destroy();
+  if (!lightbox) {
+    lightbox = new SimpleLightbox('.gallery a');
+  } else {
+    lightbox.refresh();
   }
-  lightbox = new SimpleLightbox('.gallery a');
-  lightbox.refresh();
  }
 }
 

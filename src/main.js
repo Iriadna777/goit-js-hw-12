@@ -50,8 +50,10 @@ loadMoreButton.addEventListener('click', async () => {
       toggleLoadMoreButton(false);
       showEndOfResults();
     } else {
+      const gallery = document.querySelector('.gallery');
+      const cardHeight = gallery.firstElementChild.getBoundingClientRect().height;
       window.scrollBy({
-        top: document.querySelector('.gallery').getBoundingClientRect().height,
+        top: cardHeight * 2,
         behavior: 'smooth'
       });
     }
